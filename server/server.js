@@ -18,8 +18,8 @@ app.get("/", async (req, res) => {
     res.status(200).send("Sever is running...");
   } catch (e) {}
 });
-
-// Endpoint for fetching all items
+/*
+// Endpoint for home
 app.get("/items", async (req, res) => {
   try {
     const db = await getDB();
@@ -306,7 +306,7 @@ app.delete("/profile/:accountId", async (req, res) => {
     res.status(500).send({ message: "Failed to delete account" });
   }
 });
-
+*/
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
