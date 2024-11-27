@@ -2,9 +2,7 @@
 
 const express = require('express');
 const app = express();
-onst jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const cors = require("cors");
+
 
 app.get("/", async (req, res) => {
   try {
