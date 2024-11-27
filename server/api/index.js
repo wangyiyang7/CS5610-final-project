@@ -14,7 +14,7 @@ const dbName = "Superstore";
 
 app.get("/", async (req, res) => {
   try {
-    res.status(200).send("Sever is running...");
+    res.status(200).send("CS5610 Fall2024 Group6 Sever is running...");
   } catch (e) {}
 });
 
