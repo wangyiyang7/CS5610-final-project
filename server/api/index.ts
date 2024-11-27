@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const express = require('express');
 const app = express();
-
+const { connectDB, getDB } = require("./db");
 
 app.get("/", async (req, res) => {
   try {
