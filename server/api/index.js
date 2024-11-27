@@ -12,18 +12,19 @@ connectDB().catch((err) => console.error(err));
 
 app.use(cors());
 app.use(express.json());
-/*
+
 app.get("/", async (req, res) => {
   try {
-    res.status(200).send("Sever is running...");
+    res.status(200);
   } catch (e) {}
 });
-*/
+
 // Endpoint for home
 app.get("/items", async (req, res) => {
   try {
     const db = await getDB();
     const collection = db.collection("products");
+    console.log(collection);
     const items = await collection.find({}).toArray();
     res.status(200).json(items);
   } catch (e) {
