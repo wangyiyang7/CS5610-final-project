@@ -2,17 +2,46 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const cors = require("cors");
-const { connectDB, getDB } = require("./db");
+// const { connectDB, getDB } = require("./db");
 const app = express();
-const port = 5001;
-const SECRET_KEY = "helloworld";
-
-// Connect to MongoDB
-connectDB().catch((err) => console.error(err));
-
 app.use(cors());
 app.use(express.json());
+const port = 5001;
+const SECRET_KEY = "helloworld";
+const { MongoClient } = require("mongodb");
+const url = "mongodb+srv://wangyiyang7:clR7MmVoZLVz2SL1@cluster0.j4n8d.mongodb.net/";
+const dbName = "Superstore";
 
+// Connect to MongoDB
+//connectDB().catch((err) => console.error(err));
+
+async function run() {
+app.get("/", async (req, res) => {
+  try {
+    res.status(200).send("Sever is running...");
+  } catch (e) {}
+});
+  
+  app.get("/items", async (req, res) => {
+    try {
+      const client = new MongoClient(url);
+      await client.connect();
+      db = client.db(dbName);
+      
+      const collection = db.collection("products");
+      const items = await collection.find({}).toArray();
+      res.status(200).json(items);
+    } catch (e) {
+      console.error(e);
+      res.status(500).json({ message: "Error fetching items" });
+    }
+  });
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
+}
+run();
+/*
 app.get("/", async (req, res) => {
   try {
     res.status(200).send("Sever is running...");
@@ -28,7 +57,7 @@ app.get("/items", async (req, res) => {
     res.status(200).json(items);
   } catch (e) {
     console.error(e);
-    res.status(500).send({ message: "Error fetching items" });
+    res.status(500).json({ message: "Error fetching items" });
   }
 });
 
@@ -311,4 +340,4 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-module.exports = app;
+module.exports = app;*/
