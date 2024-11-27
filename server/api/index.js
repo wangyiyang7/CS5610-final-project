@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {
   try {
-    res.status(200).send("Server is running...);
+    res.status(200).send("Server is running...");
   } catch (e) {}
 });
 
