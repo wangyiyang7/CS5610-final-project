@@ -2,7 +2,6 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const cors = require("cors");
-
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -13,42 +12,6 @@ const url =
   "mongodb+srv://wangyiyang7:clR7MmVoZLVz2SL1@cluster0.j4n8d.mongodb.net/";
 const dbName = "Superstore";
 
-/*
-async function run() {
-app.get("/", async (req, res) => {
-  try {
-    res.status(200).send("Sever is running...");
-  } catch (e) {}
-});
-  
-  app.get("/items", async (req, res) => {
-    try {
-      const client = new MongoClient(url);
-      await client.connect();
-      db = client.db(dbName);
-      
-      const collection = db.collection("products");
-      const items = await collection.find({}).toArray();
-      res.status(200).json(items);
-    } catch (e) {
-      console.error(e);
-      res.status(500).json({ message: "Error fetching items" });
-    }
-  });
-  app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-  });
-}
-run();*/
-
-let db;
-async function connectDB() {
-  const client = new MongoClient(url);
-  await client.connect();
-  db = client.db(dbName);
-  console.log("Connected to MongoDB");
-}
-
 app.get("/", async (req, res) => {
   try {
     res.status(200).send("Sever is running...");
@@ -58,15 +21,32 @@ app.get("/", async (req, res) => {
 // Endpoint for home
 app.get("/items", async (req, res) => {
   try {
+    const client = new MongoClient(url);
+    await client.connect();
+    const db = client.db(dbName);
     const collection = db.collection("products");
     const items = await collection.find({}).toArray();
     res.status(200).json(items);
   } catch (e) {
     console.error(e);
-    res.status(500).json({ message: "Error fetching items" });
+    res.status(500).send({ message: "Error fetching items" });
   }
 });
 /*
+// Endpoint for item detail
+app.get("/item/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const db = await getDB();
+    const collection = db.collection("products");
+    const item = await collection.findOne({ id: id });
+    res.status(200).json(item);
+  } catch (e) {
+    console.error(e);
+    res.status(500).send({ message: "Error fetching item" });
+  }
+});
+
 // Endpoint for search
 app.get("/search", async (req, res) => {
   const { query } = req.query;
@@ -79,20 +59,6 @@ app.get("/search", async (req, res) => {
   } catch (e) {
     console.error(e);
     res.status(500).send({ message: "Error searching items" });
-  }
-});
-
-// Endpoint for item detail
-app.get("/item/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    const db = await getDB();
-    const collection = db.collection("products");
-    const item = await collection.findOne({ id: id });
-    res.status(200).json(item);
-  } catch (e) {
-    console.error(e);
-    res.status(500).send({ message: "Error fetching item" });
   }
 });
 
@@ -341,14 +307,9 @@ app.delete("/profile/:accountId", async (req, res) => {
     res.status(500).send({ message: "Failed to delete account" });
   }
 });*/
-connectDB()
-  .then(() => {
-    app.listen(port, () => {
-      console.log(`Server running on port ${port}`);
-    });
-  })
-  .catch((err) => {
-    console.error("Failed to connect to MongoDB", err);
-  });
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 
 module.exports = app;
