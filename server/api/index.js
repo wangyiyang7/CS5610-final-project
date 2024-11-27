@@ -12,13 +12,13 @@ connectDB().catch((err) => console.error(err));
 
 app.use(cors());
 app.use(express.json());
-
+/*
 app.get("/", async (req, res) => {
   try {
     res.status(200).send("Sever is running...");
   } catch (e) {}
 });
-
+*/
 // Endpoint for home
 app.get("/items", async (req, res) => {
   try {
