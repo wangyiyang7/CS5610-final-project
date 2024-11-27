@@ -48,12 +48,14 @@ app.get("/item/:id", async (req, res) => {
     res.status(500).send({ message: "Error fetching item" });
   }
 });
-/*
+
 // Endpoint for search
 app.get("/search", async (req, res) => {
   const { query } = req.query;
   try {
-    const db = await getDB();
+    const client = new MongoClient(url);
+    await client.connect();
+    const db = client.db(dbName);
     const collection = db.collection("products");
     const regex = new RegExp(query, "i");
     const items = await collection.find({ productName: regex }).toArray();
@@ -67,7 +69,9 @@ app.get("/search", async (req, res) => {
 // Endpoint for cart
 app.get("/cart", async (req, res) => {
   try {
-    const db = await getDB();
+    const client = new MongoClient(url);
+    await client.connect();
+    const db = client.db(dbName);
     const collection = db.collection("cart");
     const items = await collection.find({}).toArray();
     res.status(200).json(items);
@@ -92,7 +96,9 @@ app.post("/register", async (req, res) => {
       phoneNumber: req.body.phoneNumber,
     };
 
-    const db = await getDB();
+    const client = new MongoClient(url);
+    await client.connect();
+    const db = client.db(dbName);
     const collection = await db.collection("user");
     const result = await collection.insertOne(user);
     res.status(201).send({ message: "User registered successfully!" });
@@ -106,7 +112,9 @@ app.post("/register", async (req, res) => {
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
-    const db = await getDB();
+    const client = new MongoClient(url);
+    await client.connect();
+    const db = client.db(dbName);
     const collection = await db.collection("user");
     const user = await collection.findOne({
       email: email,
@@ -154,7 +162,9 @@ app.get("/profile/:accountId", async (req, res) => {
     if (decoded.id !== accountId) {
       return res.status(403).send({ message: "Unauthorized access!" });
     }
-    const db = await getDB();
+    const client = new MongoClient(url);
+    await client.connect();
+    const db = client.db(dbName);
     const collection = await db.collection("user");
     const user = await collection.findOne({ accountId: accountId });
     if (!user) {
@@ -184,7 +194,9 @@ app.post("/order/:accountId/:orderNumber", async (req, res) => {
     items,
   };
   try {
-    const db = await getDB();
+    const client = new MongoClient(url);
+    await client.connect();
+    const db = client.db(dbName);
     const collection = await db.collection("order");
     const orders = await collection.insertOne(orderData);
     res.status(200).send("Order received successfully");
@@ -207,7 +219,9 @@ app.get("/order/:accountId", async (req, res) => {
     if (decoded.id !== accountId) {
       return res.status(403).send({ message: "Unauthorized access!" });
     }
-    const db = await getDB();
+    const client = new MongoClient(url);
+    await client.connect();
+    const db = client.db(dbName);
     const collection = await db.collection("order");
     const orders = await collection
       .find({ accountId: accountId })
@@ -231,7 +245,9 @@ app.delete("/order/:orderNumber", async (req, res) => {
 
   try {
     const decoded = await verifyToken(token, SECRET_KEY);
-    const db = await getDB();
+    const client = new MongoClient(url);
+    await client.connect();
+    const db = client.db(dbName);
     const collection = await db.collection("order");
     const order = await collection.findOne({ orderNumber: orderNumber });
     if (order.accountId !== decoded.id) {
@@ -258,7 +274,9 @@ app.put("/profile/:accountId", async (req, res) => {
     if (decoded.id !== accountId) {
       return res.status(403).send({ message: "Unauthorized access!" });
     }
-    const db = await getDB();
+    const client = new MongoClient(url);
+    await client.connect();
+    const db = client.db(dbName);
     const collection = await db.collection("user");
     const result = await collection.updateOne(
       { accountId: accountId },
@@ -297,7 +315,9 @@ app.delete("/profile/:accountId", async (req, res) => {
     if (decoded.id !== accountId) {
       return res.status(403).send({ message: "Unauthorized access!" });
     }
-    const db = await getDB();
+    const client = new MongoClient(url);
+    await client.connect();
+    const db = client.db(dbName);
     const collection = await db.collection("user");
     const result = await collection.deleteOne({ accountId: accountId });
     if (result.deletedCount === 0) {
@@ -308,7 +328,7 @@ app.delete("/profile/:accountId", async (req, res) => {
     console.error("Error deleting account:", error);
     res.status(500).send({ message: "Failed to delete account" });
   }
-});*/
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
