@@ -11,7 +11,7 @@ const SearchComponent = () => {
     const fetchSearchResults = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5001/search?query=${query}`
+          `https://cs5610-final-project-server.vercel.app/search?query=${query}`
         );
         setResults(await response.json());
       } catch (err) {

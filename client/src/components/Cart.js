@@ -46,7 +46,7 @@ function CartComponent() {
         items: cart,
       };
       const response = await fetch(
-        `http://localhost:5001/order/${accountId}/${orderNumber}`,
+        `https://cs5610-final-project-server.vercel.app/order/${accountId}/${orderNumber}`,
         {
           method: "POST",
           headers: {

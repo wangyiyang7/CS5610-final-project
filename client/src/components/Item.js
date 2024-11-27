@@ -8,7 +8,9 @@ const ItemComponent = ({ addToCart }) => {
   useEffect(() => {
     const fetchItem = async () => {
       try {
-        const response = await fetch(`http://localhost:5001/item/${id}`);
+        const response = await fetch(
+          `https://cs5610-final-project-server.vercel.app/item/${id}`
+        );
         setItem(await response.json());
       } catch (err) {
         console.error(err);

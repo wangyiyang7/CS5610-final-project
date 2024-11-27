@@ -7,7 +7,9 @@ const HomeComponent = ({ func }) => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch("http://localhost:5001/items");
+        const response = await fetch(
+          "https://cs5610-final-project-server.vercel.app/items"
+        );
         const data = await response.json();
         setItems(data);
       } catch (err) {

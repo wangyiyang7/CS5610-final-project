@@ -14,7 +14,7 @@ const OrderHistoryComponent = () => {
       try {
         const userToken = localStorage.getItem("token");
         const orderResponse = await fetch(
-          `http://localhost:5001/order/${accountId}`,
+          `https://cs5610-final-project-server.vercel.app/order/${accountId}`,
           {
             method: "GET",
             headers: {

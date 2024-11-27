@@ -17,7 +17,7 @@ const ProfileComponent = () => {
       try {
         const userToken = localStorage.getItem("token");
         const userResponse = await fetch(
-          `http://localhost:5001/profile/${accountId}`,
+          `https://cs5610-final-project-server.vercel.app/profile/${accountId}`,
           {
             method: "GET",
             headers: {
@@ -30,7 +30,7 @@ const ProfileComponent = () => {
         setUserInfo(userData);
 
         const orderResponse = await fetch(
-          `http://localhost:5001/order/${accountId}`,
+          `https://cs5610-final-project-server.vercel.app/order/${accountId}`,
           {
             method: "GET",
             headers: {
@@ -55,14 +55,17 @@ const ProfileComponent = () => {
 
   const handleSaveClick = async (updatedInfo) => {
     const saveToken = localStorage.getItem("token");
-    const response = await fetch(`http://localhost:5001/profile/${accountId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "x-access-token": saveToken,
-      },
-      body: JSON.stringify(updatedInfo),
-    });
+    const response = await fetch(
+      `https://cs5610-final-project-server.vercel.app/profile/${accountId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": saveToken,
+        },
+        body: JSON.stringify(updatedInfo),
+      }
+    );
     if (response.ok) {
       setUserInfo(updatedInfo);
       setIsEditing(false); // Exit edit mode
@@ -103,13 +106,16 @@ const ProfileComponent = () => {
     setOrderHistory(newOrderHistory);
     try {
       const userToken = localStorage.getItem("token");
-      const userResponse = await fetch(`http://localhost:5001/order/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": userToken,
-        },
-      });
+      const userResponse = await fetch(
+        `https://cs5610-final-project-server.vercel.app/order/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "x-access-token": userToken,
+          },
+        }
+      );
       if (userResponse.ok) {
         alert(`Order ${id} deleted!`);
       }
@@ -120,13 +126,16 @@ const ProfileComponent = () => {
 
   const handleDeleteAccount = async () => {
     const deleteToken = localStorage.getItem("token");
-    const response = await fetch(`http://localhost:5001/profile/${accountId}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        "x-access-token": deleteToken,
-      },
-    });
+    const response = await fetch(
+      `https://cs5610-final-project-server.vercel.app/profile/${accountId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": deleteToken,
+        },
+      }
+    );
     if (response.ok) {
       logout();
       navigate("/login");
