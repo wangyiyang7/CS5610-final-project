@@ -32,12 +32,14 @@ app.get("/items", async (req, res) => {
     res.status(500).send({ message: "Error fetching items" });
   }
 });
-/*
+
 // Endpoint for item detail
 app.get("/item/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const db = await getDB();
+    const client = new MongoClient(url);
+    await client.connect();
+    const db = client.db(dbName);
     const collection = db.collection("products");
     const item = await collection.findOne({ id: id });
     res.status(200).json(item);
@@ -46,7 +48,7 @@ app.get("/item/:id", async (req, res) => {
     res.status(500).send({ message: "Error fetching item" });
   }
 });
-
+/*
 // Endpoint for search
 app.get("/search", async (req, res) => {
   const { query } = req.query;
