@@ -1,6 +1,7 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AuthContext } from "../components/AuthContext";
+import "./navigation.css";
 
 const Navigation = () => {
   const [query, setQuery] = useState("");
