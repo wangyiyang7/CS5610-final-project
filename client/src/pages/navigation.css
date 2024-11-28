@@ -73,9 +73,10 @@ a {
 /* Media query for mobile devices */
 @media (max-width: 768px) {
   #header-container {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 1rem;
+    width: 95%;
   }
 
   #logo-icon {
@@ -83,24 +84,19 @@ a {
   }
 
   #cart-container {
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  #cart-container a {
-    margin-right: 20px;
+    width: auto;
+    justify-content: flex-end;
   }
 
   #search-container {
-    width: 90%;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    width: auto;
+    flex: 2;
+    margin: 0 1rem;
   }
 
   #search-container input {
+    width: 100%;
     font-size: 16px;
-    margin-bottom: 10px;
   }
 
   #search-container button {
