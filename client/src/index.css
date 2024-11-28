@@ -598,31 +598,35 @@ a {
 
 @media (max-width: 768px) {
   #products {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 40%;
+    /*display: grid;
+    grid-auto-flow: row;*/
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 20%;
   }
+
   #product-detail {
-    margin-top: 40%;
+    margin-top: 20%;
   }
 
   .login-page {
-    margin-top: 40%;
+    margin-top: 20%;
   }
 
   .create-account-form {
-    margin-top: 40%;
+    margin-top: 20%;
   }
 
   .cart-container {
-    margin-top: 30%;
+    margin-top: 20%;
   }
 
   .user-profile {
-    margin-top: 40%;
+    margin-top: 20%;
   }
 
   .order-history-container {
-    margin-top: 40%;
+    margin-top: 20%;
   }
 }
