@@ -25,6 +25,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/item/:id" element={<Item />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route
             path="/cart"
             element={
@@ -33,7 +34,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/register" element={<Register />} />
           <Route
             path="/profile/:accountId"
             element={
@@ -42,7 +42,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           <Route
             path="/profile/:accountId/order-history"
             element={
