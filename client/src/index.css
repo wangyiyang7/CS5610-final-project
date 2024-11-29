@@ -627,4 +627,9 @@ a {
   .order-history-container {
     margin-top: 20%;
   }
+
+  .user-profile {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
