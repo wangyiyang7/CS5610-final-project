@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 
 const LoginComponent = () => {
@@ -8,6 +8,7 @@ const LoginComponent = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
+  const location = useLocation();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -24,9 +25,12 @@ const LoginComponent = () => {
       );
       const data = await response.json();
 
+      const from = // access the pathname property of the from object within state
+        location.state?.from?.pathname || `/profile/${data.accountId}`;
+
       if (response.ok) {
         login(data.tkn, data.accountId);
-        navigate(`/profile/${data.accountId}`);
+        navigate(from);
       } else {
         setMessage("Your password is incorrect. Please try again");
       }
