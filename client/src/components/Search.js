@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-const SearchComponent = () => {
+const SearchComponent = ({ func }) => {
   const [items, setResults] = useState([]);
 
   const [searchParams] = useSearchParams();
@@ -31,7 +31,14 @@ const SearchComponent = () => {
             <h2>{item.productName}</h2>
             <p>{item.weight}</p>
             <p>Price: ${item.price}</p>
-            <button className="add-to-cart">+ Add</button>
+            <button
+              className="add-to-cart"
+              onClick={() => {
+                func(item);
+              }}
+            >
+              + Add
+            </button>
           </div>
         ))}
       </div>

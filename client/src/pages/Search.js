@@ -1,9 +1,10 @@
 import SearchComponent from "../components/Search.js";
+import addItemToCart from "../functions.js";
 
 const Search = () => {
   return (
     <div>
-      <SearchComponent />
+      <SearchComponent func={addItemToCart} />
     </div>
   );
 };
