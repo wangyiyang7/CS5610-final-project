@@ -9,7 +9,6 @@ import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./components/AuthContext";
-
 import OrderHistory from "./pages/OrderHistory";
 
 function App() {

@@ -1,5 +1,5 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../components/AuthContext";
 import "./navigation.css";
 
@@ -8,6 +8,23 @@ const Navigation = () => {
   const navigate = useNavigate();
   const { isAuthenticated, accountId, logout } = useContext(AuthContext);
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [itemCount, setItemCount] = useState(0);
+
+  useEffect(() => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const updateItemCount = () => {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const totalCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+      setItemCount(totalCount);
+    };
+    updateItemCount();
+
+    window.addEventListener("cartChange", updateItemCount);
+
+    return () => {
+      window.removeEventListener("cartChange", updateItemCount);
+    };
+  }, []);
 
   const handleSearch = () => {
     navigate(`/search?query=${query}`);
@@ -49,7 +66,10 @@ const Navigation = () => {
         onMouseLeave={() => setIsDropdownVisible(false)}
       >
         <Link to="/cart">
-          <img id="cart-icon" src="/images/shopping-cart.png" alt="cart" />
+          <div id="cart-icon-count">
+            <img id="cart-icon" src="/images/shopping-cart.png" alt="cart" />
+            <span id="cart-count">{itemCount}</span>
+          </div>
         </Link>
         <a href="/login" onClick={handleLogInClick}>
           <img id="signin-icon" src="/images/signin-icon.png" alt="login" />

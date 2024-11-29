@@ -14,6 +14,8 @@ function CartComponent() {
     );
     setCart(newCart);
     localStorage.setItem("cart", JSON.stringify(newCart));
+    const event = new Event("cartChange");
+    window.dispatchEvent(event);
   };
 
   const minus = (id) => {
@@ -24,12 +26,16 @@ function CartComponent() {
       .filter((item) => item.quantity > 0);
     setCart(newCart);
     localStorage.setItem("cart", JSON.stringify(newCart));
+    const event = new Event("cartChange");
+    window.dispatchEvent(event);
   };
 
   const deleteItem = async (id) => {
     const newCart = cart.filter((item) => item.id !== id);
     setCart(newCart);
     localStorage.setItem("cart", JSON.stringify(newCart));
+    const event = new Event("cartChange");
+    window.dispatchEvent(event);
   };
 
   const calculateSubtotal = () => {
@@ -61,6 +67,8 @@ function CartComponent() {
 
         setCart([]);
         localStorage.removeItem("cart");
+        const event = new Event("cartChange");
+        window.dispatchEvent(event);
       } else {
         alert("Failed to place order. Please try again.");
       }

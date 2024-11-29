@@ -17,6 +17,21 @@ a {
   cursor: pointer;
 }
 
+#cart-icon-count {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#cart-count {
+  margin-left: 8px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
 .dropdown-menu {
   box-shadow: 0 4px 8px;
   padding: 10px;
@@ -75,12 +90,23 @@ a {
   #header-container {
     flex-direction: row;
     align-items: center;
-    padding: 0 1rem;
-    width: 95%;
+    padding: 0;
+    width: 99%;
   }
 
   #logo-icon {
-    height: 50px;
+    height: 35px;
+  }
+
+  #cart-icon,
+  #signin-icon {
+    height: 20px;
+  }
+
+  #cart-count {
+    margin-left: 4px;
+    padding: 2px 5px;
+    font-size: 7px;
   }
 
   #cart-container {

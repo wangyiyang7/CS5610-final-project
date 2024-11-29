@@ -12,6 +12,9 @@ const addItemToCart = (item) => {
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
+
+  const event = new Event("cartChange");
+  window.dispatchEvent(event);
 };
 
 export default addItemToCart;
