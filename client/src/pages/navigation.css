@@ -129,4 +129,13 @@ a {
     font-size: 16px;
     padding: 5px 10px;
   }
+
+  .dropdown-menu {
+    box-shadow: 0 2px 4px;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 9px;
+    background-color: #f4f4f4;
+  }
 }
