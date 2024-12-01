@@ -3,6 +3,25 @@ import { render, screen, fireEvent, act } from "@testing-library/react";
 import CartComponent from "./Cart";
 import "@testing-library/jest-dom";
 
+const originalError = console.error;
+beforeAll(() => {
+  console.error = (...args) => {
+    if (
+      args[0].includes(
+        "`ReactDOMTestUtils.act` is deprecated in favor of `React.act`"
+      )
+    ) {
+      return;
+    }
+    originalError(...args);
+  };
+});
+
+afterAll(() => {
+  console.error = originalError;
+});
+
+
 beforeAll(() => {
   // Mock window.alert
   window.alert = jest.fn();

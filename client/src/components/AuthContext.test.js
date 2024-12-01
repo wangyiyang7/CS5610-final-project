@@ -2,6 +2,25 @@ import React from "react";
 import { render, screen, act } from "@testing-library/react";
 import { AuthProvider, AuthContext } from "./AuthContext";
 
+const originalError = console.error;
+beforeAll(() => {
+  console.error = (...args) => {
+    if (
+      args[0].includes(
+        "`ReactDOMTestUtils.act` is deprecated in favor of `React.act`"
+      )
+    ) {
+      return;
+    }
+    originalError(...args);
+  };
+});
+
+afterAll(() => {
+  console.error = originalError;
+});
+
+
 describe("AuthContext", () => {
   afterEach(() => {
     localStorage.clear();
