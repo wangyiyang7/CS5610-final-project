@@ -12,13 +12,33 @@ Server: [cs5610-final-project-server.vercel.app](https://cs5610-final-project-se
 ## Set up the backend, frontend, and run the project locally
 
 ### Required dependencies
-`npm install react-router-dom`
+For client, 
+"dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "azure-maps-control": "^3.5.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.0.1",
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^2.1.4"
+  },
 
-`npm install cors jsonwebtoken bcryptjs express mongodb azure-maps-control`
+For server, 
+"dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.11.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
 
-`npm install --save-dev jest` for testing purpose
 
-`npm install react-scripts` for testing purpose
 
 ### Set up and run
 
