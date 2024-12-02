@@ -4,8 +4,6 @@ import ItemComponent from "./Item";
 import { MemoryRouter, useParams } from "react-router-dom";
 import "@testing-library/jest-dom";
 
-// Item.test.js
-
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useParams: jest.fn(),
