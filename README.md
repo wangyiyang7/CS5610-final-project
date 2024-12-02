@@ -70,3 +70,14 @@ Folder structure looks like below:
 ## Database setup
 
 Not necessary. Database is accessible to any IP. 
+
+## Testing setup
+
+To set up testing for this project, follow these steps:
+
+Install the necessary testing dependencies:
+npm install --save-dev jest
+npm install react-scripts
+
+Run the tests using the following command:
+npm test
