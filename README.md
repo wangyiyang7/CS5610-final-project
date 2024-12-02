@@ -33,7 +33,7 @@ To start the server, `npm start`.
 Server will be running on http://localhost:5001/
 
 ------------------------------------------------------------------------------------------------
-Open up a terminal, `cd .\client` and `npx create-react-app .`, then install the dependencies required for frontend `npm install react-router-dom react-dom azure-maps-control`.
+Open up another terminal, `cd .\client` and `npx create-react-app .`, then install the dependencies required for frontend `npm install react-router-dom react-dom azure-maps-control`.
 
 Place the client repository content in the client folder, overwrite whatever is already there. 
 
