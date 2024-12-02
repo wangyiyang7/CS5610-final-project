@@ -5,8 +5,6 @@ import { MemoryRouter } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 import "@testing-library/jest-dom";
 
-// Login.test.js
-
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useNavigate: jest.fn(),
