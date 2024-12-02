@@ -66,3 +66,7 @@ Client will be running on http://localhost:3000/
 Folder structure looks like below: 
 
 ![image](https://github.com/user-attachments/assets/a3d66985-b2b2-49d7-9c49-1b13b011df27)
+
+## Database setup
+
+Not necessary. Database is accessible to any IP. 
