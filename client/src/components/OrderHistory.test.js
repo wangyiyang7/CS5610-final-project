@@ -4,8 +4,6 @@ import OrderHistoryComponent from "./OrderHistory";
 import { MemoryRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
 
-// client/src/components/OrderHistory.test.js
-
 describe("<OrderHistoryComponent />", () => {
   const mockOrders = [
     {
