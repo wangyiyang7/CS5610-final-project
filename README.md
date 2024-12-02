@@ -37,7 +37,7 @@ Open up another terminal, `cd .\client` and `npx create-react-app .`, then insta
 
 Place the client repository content in the client folder, overwrite whatever is already there. 
 
-To run with local server, manually replace 'https://cs5610-final-project-server.vercel.app' with 'http://localhost:5001' in each .js file in components folder. 
+<strong>To run with local server, manually replace 'https://cs5610-final-project-server.vercel.app' with 'http://localhost:5001' in each .js file in components folder. </strong>
 
 To start the client, `npm start`.
 
