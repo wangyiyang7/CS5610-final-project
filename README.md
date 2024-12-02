@@ -1,4 +1,4 @@
-# CS5610 Final Project 
+# CS5610 Final Project - Online Store Web Application
 ## Group 6
 
 ## Deployed Application:
