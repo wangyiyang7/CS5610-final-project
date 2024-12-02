@@ -16,6 +16,6 @@ Server: [cs5610-final-project-server.vercel.app](https://cs5610-final-project-se
 
 `npm install cors jsonwebtoken bcryptjs express mongodb azure-maps-control`
 
-'npm install --save-dev jest'
+`npm install --save-dev jest`
 
-'npm install react-scripts'
+`npm install react-scripts`
