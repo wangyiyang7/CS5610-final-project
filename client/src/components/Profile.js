@@ -4,6 +4,8 @@ import { AuthContext } from "../components/AuthContext";
 import * as atlas from "azure-maps-control";
 import "./atlas.min.css";
 
+// ProfileComponent is a functional component that manages user profile information.
+// It uses React hooks to manage state and side effects.
 const ProfileComponent = () => {
   const [userInfo, setUserInfo] = useState({});
   const [orderHistory, setOrderHistory] = useState([]);
