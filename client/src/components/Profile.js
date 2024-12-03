@@ -12,6 +12,7 @@ const ProfileComponent = () => {
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
 
+  // Fetch user data and order history when the component mounts or accountId changes
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -49,10 +50,7 @@ const ProfileComponent = () => {
     fetchUserData();
   }, [accountId]);
 
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
-
+  // Handle the click event to save updated user information
   const handleSaveClick = async (updatedInfo) => {
     const saveToken = localStorage.getItem("token");
     const response = await fetch(
@@ -76,6 +74,7 @@ const ProfileComponent = () => {
 
   const mapRef = useRef(null);
 
+  // Initialize the map when the component mounts
   useEffect(() => {
     const map = new atlas.Map(mapRef.current, {
       center: [-123.11544, 49.28078],
@@ -99,6 +98,7 @@ const ProfileComponent = () => {
     return () => map.dispose();
   }, []);
 
+  // Handle the click event to delete an ordergistory
   const handleDeleteOrder = async (id) => {
     const newOrderHistory = orderHistory.filter(
       (order) => order.orderNumber !== id
@@ -124,6 +124,7 @@ const ProfileComponent = () => {
     }
   };
 
+  // Handle the click event to delete the user's account
   const handleDeleteAccount = async () => {
     const deleteToken = localStorage.getItem("token");
     const response = await fetch(
@@ -142,6 +143,11 @@ const ProfileComponent = () => {
     } else {
       console.error("Error deleting account");
     }
+  };
+
+  // Handle the click event to edit the user's information
+  const handleEditClick = () => {
+    setIsEditing(true);
   };
 
   return (
