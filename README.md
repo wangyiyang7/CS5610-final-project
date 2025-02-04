@@ -7,7 +7,7 @@ Client: [cs5610-final-project-client.vercel.app](https://cs5610-final-project-cl
 
 Server: [cs5610-final-project-server.vercel.app](https://cs5610-final-project-server.vercel.app/)
 
-## Demo Video: [https://vimeo.com/1035076256/2d62e0a055](https://vimeo.com/1036609792?share=copy)
+## Demo Video: [https://vimeo.com/1036609792?share=copy](https://vimeo.com/1036609792?share=copy)
 
 ## Set up the backend, frontend, and run the project locally
 
